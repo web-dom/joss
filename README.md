@@ -28,7 +28,7 @@ Let's face it, performance of interacting with operating system isn't always the
 
 ## JOSS can easily used with remote systems
 
-Most of the web already understands JSON, imagine you are writing an interface to a JOSS system in a web browser. The problem is more easily reduced to communication via JSON over a web server or web socket.
+Most of the web already understands JSON, imagine you are writing an interface to a JOSS system in a web browser. The problem is more easily reduced to communication via JSON over a web server or web socket to a server that represents your system.
 
 
 ## Web assembly currently has poor support for multiple outputs and even then it might not be enough
