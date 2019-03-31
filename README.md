@@ -34,3 +34,15 @@ Most of the web already understands JSON, imagine you are writing an interface t
 ## Web assembly currently has poor support for multiple outputs and even then it might not be enough
 
 Because web assembly lacks an easy way to return multiple outputs, we are forced to resort to a structured format of some type. Even with the use of multiple outputs, representing return objects that are very nested may be problematic. JSON has none of these problems and works with the web assembly spec as it is now.
+
+# Examples
+
+## Getting command line arguments
+
+### Request
+
+```json
+{"operation":"get_process_arguments"}
+```
+### Response
+["vim","foo.txt"]
