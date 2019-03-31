@@ -42,7 +42,7 @@ Because web assembly lacks an easy way to return multiple outputs, we are forced
 ### Request
 
 ```json
-{"operation":"get_process_arguments"}
+{"operation":"get_process_command_line_arguments"}
 ```
 ### Response
 ```json
