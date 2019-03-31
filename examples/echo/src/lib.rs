@@ -21,7 +21,7 @@ fn main() {
         "operation": "get_command_line_arguments"
     });
     let response = joss::syscall(request_json.to_string());
-    let response_json:CommandLineArguments = from_str(&cstr_to_string(response)).unwrap();
+    let response_json:CommandLineArguments = from_str(&response).unwrap();
     unsafe {
         console_log(cstr(&response_json.arguments.clone().join(" ")));
     }
