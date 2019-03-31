@@ -23,8 +23,7 @@ It's one of the most known structured formats out there and has very strong libr
 
 ## JOSS does not preclude more performant binary interfaces when they are needed
 
-Let's face it, performance of interacting with operating system isn't always the most important aspect of our program. When it is though, JOSS does not limit the ability to use alternative performant interactions. Binary structures could be considered an overeager optimization.
-
+Let's face it, performance of interacting with operating system isn't always the most important aspect of our program. When it is though, JOSS does not limit the ability to use alternative performant interactions. Binary structures could be percieved as an overeager optimization in many scenarios.
 
 ## JOSS can be easily used with remote systems
 
