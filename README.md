@@ -40,7 +40,7 @@ Because web assembly lacks an easy way to return multiple outputs, we are forced
 
 # Examples
 
-The spec will be mostly mirroring concepts of the POSIX interface with emphasis on human readability and simplicity http://pubs.opengroup.org/onlinepubs/9699919799/
+The spec will be mirroring concepts of the POSIX interface with emphasis on human readability and simplicity http://pubs.opengroup.org/onlinepubs/9699919799/
 
 ## Getting command line arguments
 
