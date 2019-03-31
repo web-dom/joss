@@ -64,3 +64,32 @@ Because web assembly lacks an easy way to return multiple outputs, we are forced
 ```json
 12345
 ```
+
+## Write to a file
+
+### Request
+
+```json
+{
+  "operation":"write_to_file", 
+  "file_descriptor":12345, 
+  "text":"hello world"
+}
+```
+
+```json
+{
+  "operation":"write_to_file", 
+  "file_descriptor":12345, 
+  "base64":"basbfrasfs="
+}
+```
+### Response
+```json
+{}
+```
+```json
+{
+  "error":"you do not own this file"
+}
+```
