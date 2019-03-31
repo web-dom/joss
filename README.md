@@ -32,7 +32,7 @@ Most of the web already understands JSON, imagine you are writing an interface t
 
 ## Easier error handling
 
-Because JSON is a more flexable structure than a binary format.  Error handling is easier to implement into the spec.
+Because JSON is a more flexable structure than a binary format.  Error handling is easier and more expressive to implement into the spec.
 
 ## Web assembly currently has poor support for multiple outputs and even then it might not be enough
 
