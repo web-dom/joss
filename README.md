@@ -8,7 +8,7 @@ Web assembly is going down the route of running not just in the browser but also
 
 ## JSON puts simpler requirements on programming languages
 
-Not every programming language has a strong capability to do binary structs. By using JSON we reduce the requirements of interacting with a JOSS system down to JSON parsing and encoding.
+Not every programming language has a strong capability to do binary structs. By using JSON we reduce the requirements of interacting with a JOSS system down to JSON parsing/encoding and C strings.
 
 
 ## JSON is human readable
