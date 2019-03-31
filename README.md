@@ -116,7 +116,6 @@ This application `echo` will simply write to the console log what command line a
 ```rust
 #[macro_use]
 extern crate serde_derive;
-extern crate serde;
 extern crate malloc;
 use joss;
 use cstring::*;
