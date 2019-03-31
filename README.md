@@ -54,7 +54,11 @@ Because web assembly lacks an easy way to return multiple outputs, we are forced
 ### Request
 
 ```json
-{"operation":"open_file", "path":"/home/helloworld.txt", mode:["read","write"]}
+{
+  "operation":"open_file", 
+  "path":"/home/helloworld.txt", 
+  "mode":["read","write"]
+}
 ```
 ### Response
 ```json
