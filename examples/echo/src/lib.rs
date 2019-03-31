@@ -1,9 +1,9 @@
-use cstring::*;
 #[macro_use]
 extern crate serde_derive;
 extern crate serde;
 extern crate malloc;
 use joss;
+use cstring::*;
 use serde_json::{json,from_str};
 
 #[derive(Serialize, Deserialize)]

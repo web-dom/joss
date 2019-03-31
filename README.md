@@ -64,8 +64,8 @@ The spec will be mirroring concepts of the POSIX interface with emphasis on huma
 
 ```json
 {
-  "operation":"open_file", 
-  "path":"/home/helloworld.txt", 
+  "operation":"open_file",
+  "path":"/home/helloworld.txt",
   "mode":["read","write"]
 }
 ```
@@ -82,16 +82,16 @@ The spec will be mirroring concepts of the POSIX interface with emphasis on huma
 
 ```json
 {
-  "operation":"write_to_file", 
-  "file_descriptor":12345, 
+  "operation":"write_to_file",
+  "file_descriptor":12345,
   "text":"hello world"
 }
 ```
 
 ```json
 {
-  "operation":"write_to_file", 
-  "file_descriptor":12345, 
+  "operation":"write_to_file",
+  "file_descriptor":12345,
   "base64":"basbfrasfs="
 }
 ```
@@ -102,5 +102,44 @@ The spec will be mirroring concepts of the POSIX interface with emphasis on huma
 ```json
 {
   "error":"you do not own this file"
+}
+```
+
+# Let's write an application
+
+This application `echo` will simply write to the console log what command line arguments it receives. This app has various small helper libraries:
+* `serde` - for getting json in and output
+* `malloc` - a small package exposing a function called `malloc` to let data get into your web assembly module
+* `cstring` - a small package for dealing with handling c strings in web assembly
+* `joss` - a simple rust wrapper for sending JOSS operations to the host
+
+```rust
+#[macro_use]
+extern crate serde_derive;
+extern crate serde;
+extern crate malloc;
+use joss;
+use cstring::*;
+use serde_json::{json,from_str};
+
+#[derive(Serialize, Deserialize)]
+struct CommandLineArguments {
+    arguments: Vec<String>,
+}
+
+extern "C" {
+    fn console_log(msg:CString);
+}
+
+#[no_mangle]
+fn main() {
+    let request_json = json!({
+        "operation": "get_command_line_arguments"
+    });
+    let response = joss::syscall(request_json.to_string());
+    let response_json:CommandLineArguments = from_str(&response).unwrap();
+    unsafe {
+        console_log(cstr(&response_json.arguments.clone().join(" ")));
+    }
 }
 ```
