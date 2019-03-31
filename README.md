@@ -53,7 +53,9 @@ The spec will be mirroring concepts of the POSIX interface with emphasis on huma
 ```
 ### Response
 ```json
-["vim","foo.txt"]
+{
+  "arguments":["vim","foo.txt"]
+}
 ```
 
 ## Open a file
@@ -69,7 +71,9 @@ The spec will be mirroring concepts of the POSIX interface with emphasis on huma
 ```
 ### Response
 ```json
-12345
+{
+  "file_descriptor":12345
+}
 ```
 
 ## Write to a file
