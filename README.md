@@ -30,12 +30,17 @@ Let's face it, performance of interacting with operating system isn't always the
 
 Most of the web already understands JSON, imagine you are writing an interface to a JOSS system in a web browser. The problem is more easily reduced to communication via JSON over a web server or web socket to a server that represents your system.
 
+## Easier error handling
+
+Because JSON is a more flexable structure than a binary format.  Error handling is easier to implement into the spec.
 
 ## Web assembly currently has poor support for multiple outputs and even then it might not be enough
 
 Because web assembly lacks an easy way to return multiple outputs, we are forced to resort to a structured format of some type. Even with the use of multiple outputs, representing return objects that are very nested or have arrays may be problematic. JSON has few if none of these complexities (asside from memory allocation) and works with the web assembly spec as it is now.
 
 # Examples
+
+The spec will be mostly mirroring concepts of the POSIX interface with emphasis on human readability and simplicity http://pubs.opengroup.org/onlinepubs/9699919799/
 
 ## Getting command line arguments
 
