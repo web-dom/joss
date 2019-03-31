@@ -47,7 +47,9 @@ The spec will be mostly mirroring concepts of the POSIX interface with emphasis 
 ### Request
 
 ```json
-{"operation":"get_process_command_line_arguments"}
+{
+  "operation":"get_command_line_arguments"
+}  
 ```
 ### Response
 ```json
