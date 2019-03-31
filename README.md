@@ -45,4 +45,6 @@ Because web assembly lacks an easy way to return multiple outputs, we are forced
 {"operation":"get_process_arguments"}
 ```
 ### Response
+```json
 ["vim","foo.txt"]
+```
