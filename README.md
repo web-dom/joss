@@ -26,7 +26,7 @@ It's one of the most know structured format out there and has very strong librar
 Let's face it, performance of interacting with operating system isn't always the most important aspect of our program. When it is though, JOSS does not limit the ability to use alternative performant interactions. Binary structures could be considered an overeager optimization.
 
 
-## JOSS can easily used with remote systems
+## JOSS can be easily used with remote systems
 
 Most of the web already understands JSON, imagine you are writing an interface to a JOSS system in a web browser. The problem is more easily reduced to communication via JSON over a web server or web socket to a server that represents your system.
 
