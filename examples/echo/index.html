@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <title>Wasp</title>
+    <script>
+      let utf8dec = new TextDecoder("utf-8");
+      let utf8enc = new TextEncoder("utf-8");
+      let memory = null;
+      let exports = null;
+      function fromCString(start) {
+        const data = new Uint8Array(memory.buffer);
+        const str = [];
+        let i = start;
+        while (data[i] !== 0) {
+          str.push(data[i]);
+          i++;
+        }
+        return utf8dec.decode(new Uint8Array(str));
+      }
+      fetch("echo.wasm")
+        .then(response => response.arrayBuffer())
+        .then(bytes => {
+          return WebAssembly.instantiate(bytes, {
+            env: {
+              joss_syscall: function(request) {
+                let _request = fromCString(request);
+                let str = JSON.stringify({
+                  arguments: ["vim", "helloworld.txt"]
+                });
+                let bytes = utf8enc.encode(str + String.fromCharCode(0));
+                let len = bytes.length;
+                let start = exports.malloc(len);
+                const m = new Uint8Array(memory.buffer);
+                m.set(bytes, start);
+                return start;
+              },
+              console_log: function(message) {
+                let _message = fromCString(message);
+                console.log(_message);
+              }
+            }
+          });
+        })
+        .then(results => {
+          memory = results.instance.exports.memory;
+          exports = results.instance.exports;
+          results.instance.exports.main();
+        });
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,16 @@
+[package]
+name = "echo"
+version = "0.1.0"
+authors = ["Richard <Richard>"]
+edition = "2018"
+
+[lib]
+crate-type =["cdylib"]
+
+[dependencies]
+joss={path="../../"}
+serde_derive="1"
+serde="1"
+serde_json="1"
+cstring="0.0.2"
+malloc="0"
