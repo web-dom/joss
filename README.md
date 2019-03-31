@@ -18,7 +18,7 @@ Human readability helps debugging and making introspection into how systems are 
 
 ## JSON is already a popular standard
 
-It's one of the most know structured format out there.
+It's one of the most know structured format out there and has very strong library support already.
 
 
 ## JOSS does no preclude more performant binary interfaces when they are needed
