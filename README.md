@@ -28,11 +28,11 @@ Let's face it, performance of interacting with operating system isn't always the
 
 ## JOSS can be easily used with remote systems
 
-Most of the web already understands JSON, imagine you are writing an interface to a JOSS system in a web browser. The problem is more easily reduced to communication via JSON over a web server or web socket to a server that represents your system.
+Most of the web already understands JSON, imagine you are writing an interface to a JOSS system in a web browser that communicates to a server which represents your system. This situation more easily accomplished by communication with JSON over a http or web socket.
 
 ## Easier error handling
 
-Because JSON is a more flexable structure than a binary format.  Error handling is easier and more expressive to implement into the spec.
+Because JSON is a less rigid structure than a binary format.  Error handling is easier and more expressive to implement into the spec.
 
 ## Web assembly currently has poor support for multiple outputs and even then it might not be enough
 
