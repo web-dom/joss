@@ -1,7 +1,6 @@
 #[macro_use]
 extern crate serde_derive;
 extern crate malloc;
-use cstring::*;
 use joss;
 use serde_json::{from_str, json};
 
@@ -10,18 +9,22 @@ struct CommandLineArguments {
     arguments: Vec<String>,
 }
 
-extern "C" {
-    fn console_log(msg: CString);
-}
-
 #[no_mangle]
 fn main() {
+    // get command line args
     let request_json = json!({
         "operation": "get_command_line_arguments"
     });
     let response = joss::syscall(request_json.to_string());
     let response_json: CommandLineArguments = from_str(&response).unwrap();
-    unsafe {
-        console_log(cstr(&response_json.arguments.clone().join(" ")));
-    }
+
+    let output = response_json.arguments.clone().join(" ");
+
+    // write to stdout
+    let output_json = json!({
+        "operation": "write_file",
+        "file_decscriptor": 1,
+        "text":output
+    });
+    joss::syscall(output_json.to_string());
 }

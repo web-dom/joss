@@ -24,19 +24,20 @@
             env: {
               joss_syscall: function(request) {
                 let _request = fromCString(request);
-                let str = JSON.stringify({
-                  arguments: ["vim", "helloworld.txt"]
-                });
-                let bytes = utf8enc.encode(str + String.fromCharCode(0));
-                let len = bytes.length;
-                let start = exports.malloc(len);
-                const m = new Uint8Array(memory.buffer);
-                m.set(bytes, start);
-                return start;
-              },
-              console_log: function(message) {
-                let _message = fromCString(message);
-                console.log(_message);
+                let command = JSON.parse(_request);
+                if (command.operation == "get_command_line_arguments") {
+                  let str = JSON.stringify({
+                    arguments: ["vim", "helloworld.txt"]
+                  });
+                  let bytes = utf8enc.encode(str + String.fromCharCode(0));
+                  let len = bytes.length;
+                  let start = exports.malloc(len);
+                  const m = new Uint8Array(memory.buffer);
+                  m.set(bytes, start);
+                  return start;
+                } else if (command.operation == "write_file") {
+                  console.log(command.text);
+                }
               }
             }
           });

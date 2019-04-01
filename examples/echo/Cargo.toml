@@ -12,5 +12,4 @@ joss=  {path = "../../"}
 serde_derive="1"
 serde="1"
 serde_json="1"
-cstring="0.0.2"
 malloc="0"

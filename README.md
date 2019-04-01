@@ -110,7 +110,6 @@ The spec will be mirroring concepts of the POSIX interface with emphasis on huma
 This application `echo` will simply write to the console log what command line arguments it receives. This app has various small helper libraries:
 * `serde` - for getting json in and output
 * `malloc` - a small package exposing a function called `malloc` to let data get into your web assembly module
-* `cstring` - a small package for dealing with handling c strings in web assembly
 * `joss` - a simple rust wrapper for sending JOSS operations to the host
 
 ```rust
@@ -118,27 +117,30 @@ This application `echo` will simply write to the console log what command line a
 extern crate serde_derive;
 extern crate malloc;
 use joss;
-use cstring::*;
-use serde_json::{json,from_str};
+use serde_json::{from_str, json};
 
 #[derive(Serialize, Deserialize)]
 struct CommandLineArguments {
     arguments: Vec<String>,
 }
 
-extern "C" {
-    fn console_log(msg:CString);
-}
-
 #[no_mangle]
 fn main() {
+    // get command line args
     let request_json = json!({
         "operation": "get_command_line_arguments"
     });
     let response = joss::syscall(request_json.to_string());
-    let response_json:CommandLineArguments = from_str(&response).unwrap();
-    unsafe {
-        console_log(cstr(&response_json.arguments.clone().join(" ")));
-    }
+    let response_json: CommandLineArguments = from_str(&response).unwrap();
+
+    let output = response_json.arguments.clone().join(" ");
+
+    // write to stdout
+    let output_json = json!({
+        "operation": "write_file",
+        "file_decscriptor": 1,
+        "text":output
+    });
+    joss::syscall(output_json.to_string());
 }
 ```
