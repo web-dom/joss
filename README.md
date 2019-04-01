@@ -8,7 +8,7 @@ Web assembly is going down the route of running not just in the browser but also
 
 ## JSON puts simpler requirements on programming languages
 
-Not every programming language has a strong capability to do binary structs. By using JSON we reduce the requirements of interacting with a JOSS system down to JSON parsing and encoding.
+Not every programming language has a strong capability to do binary structs. By using JSON we reduce the requirements of interacting with a JOSS system down to JSON parsing/encoding and C strings.
 
 
 ## JSON is human readable
@@ -23,16 +23,15 @@ It's one of the most known structured formats out there and has very strong libr
 
 ## JOSS does not preclude more performant binary interfaces when they are needed
 
-Let's face it, performance of interacting with operating system isn't always the most important aspect of our program. When it is though, JOSS does not limit the ability to use alternative performant interactions. Binary structures could be considered an overeager optimization.
-
+Let's face it, performance of interacting with operating system isn't always the most important aspect of our program. When it is though, JOSS does not limit the ability to use alternative performant interactions. Binary structures could be percieved as an overeager optimization in many scenarios.
 
 ## JOSS can be easily used with remote systems
 
-Most of the web already understands JSON, imagine you are writing an interface to a JOSS system in a web browser. The problem is more easily reduced to communication via JSON over a web server or web socket to a server that represents your system.
+Most of the web already understands JSON, imagine you are writing an interface to a JOSS system in a web browser that communicates to a server which represents your system. This situation more easily accomplished by communication with JSON over a http or web socket.
 
 ## Easier error handling
 
-Because JSON is a more flexable structure than a binary format.  Error handling is easier and more expressive to implement into the spec.
+Because JSON is a less rigid structure than a binary format.  Error handling is easier and more expressive to implement into the spec.
 
 ## Web assembly currently has poor support for multiple outputs and even then it might not be enough
 
