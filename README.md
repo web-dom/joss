@@ -116,7 +116,7 @@ pub fn main() -> () {
         "operation": "write_file",
         "file_descriptor": 1,
         "text":"Hello World!"
-    }"#);
+    }"#.to_owned());
 }
 ```
 
