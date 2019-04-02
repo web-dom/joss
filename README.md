@@ -104,6 +104,22 @@ The spec will be mirroring concepts of the POSIX interface with emphasis on huma
 }
 ```
 
+# Hello World
+
+```rust
+use joss;
+
+#[no_mangle]
+pub fn main() -> () {
+    // write to stdout
+    joss::syscall(r#"{
+        "operation": "write_file",
+        "file_descriptor": 1,
+        "text":"Hello World!"
+    }"#);
+}
+```
+
 # Let's write an application
 
 This application `echo` will simply write to the console log what command line arguments it receives. This app has various small helper libraries:
