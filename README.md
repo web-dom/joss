@@ -39,7 +39,7 @@ Because web assembly lacks an easy way to return multiple outputs, we are forced
 
 # Examples
 
-The spec will be mirroring concepts of the POSIX interface with emphasis on human readability and simplicity http://pubs.opengroup.org/onlinepubs/9699919799/
+The spec will be mirroring concepts of the Plan 9 system call interface with emphasis on human readability and simplicity http://aiju.de/plan_9/plan9-syscalls
 
 ## Getting command line arguments
 
