@@ -78,7 +78,7 @@ JOSS takes inspiration from Plan 9 and Redox system calls:
   "operation":"file_read",
   "file_descriptor": 5
 }
-> { "arguments":["vim","foo.txt"] }
+> { text:"[\"vim\",\"foo.txt\"]" }
 ```
 
 ## Write to a file
