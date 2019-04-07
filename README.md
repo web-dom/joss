@@ -65,77 +65,42 @@ JOSS takes inspiration from Plan 9 and Redox system calls:
 
 ```json
 {
-  "operation":"get_command_line_arguments"
-}  
-```
-### Response
-```json
-{
-  "arguments":["vim","foo.txt"]
+  "operation":"get_process_id"
 }
-```
-
-## Open a file
-
-### Request
-
-```json
+> { "process_id": 123 }
 {
-  "operation":"open_file",
-  "path":"/home/helloworld.txt",
-  "mode":["read","write"]
+  "operation":"file_open",
+  "mode":["read"],
+  "path":"/proc/123/args"
 }
-```
-### Response
-```json
+> { "file_descriptor": 5 }
 {
-  "file_descriptor":12345
+  "operation":"file_read",
+  "file_descriptor": 5
 }
+> { "arguments":["vim","foo.txt"] }
 ```
 
 ## Write to a file
 
-### Request
-
-```json
+```json{
+  "operation":"file_open",
+  "mode":["write"],
+  "path":"/hello.txt"
+}
+> { "file_descriptor": 5 }
 {
   "operation":"write_to_file",
-  "file_descriptor":12345,
+  "file_descriptor":5,
   "text":"hello world"
 }
-```
-
-```json
+> {}
 {
   "operation":"write_to_file",
-  "file_descriptor":12345,
+  "file_descriptor":5,
   "base64":"basbfrasfs="
 }
-```
-### Response
-```json
-{}
-```
-```json
-{
-  "error":"you do not own this file"
-}
-```
-
-# Hello World
-
-```rust
-use joss;
-
-#[no_mangle]
-pub fn main() -> () {
-    // write to stdout
-    joss::syscall(r#"{
-        "operation": "write_file",
-        "file_descriptor": 1,
-        "text":"Hello World!"
-    }"#.to_owned());
-}
+> {}
 ```
 
 # Let's write an application
@@ -152,26 +117,12 @@ extern crate malloc;
 use joss;
 use serde_json::{from_str, json};
 
-#[derive(Serialize, Deserialize)]
-struct CommandLineArguments {
-    arguments: Vec<String>,
-}
-
 #[no_mangle]
 fn main() {
-    // get command line args
-    let request_json = json!({
-        "operation": "get_command_line_arguments"
-    });
-    let response = joss::syscall(request_json.to_string());
-    let response_json: CommandLineArguments = from_str(&response).unwrap();
-
-    let output = response_json.arguments.clone().join(" ");
-
     // write to stdout
     let output_json = json!({
-        "operation": "write_file",
-        "file_decscriptor": 1,
+        "operation": "file_write",
+        "file_descriptor": 1,
         "text":output
     });
     joss::syscall(output_json.to_string());
