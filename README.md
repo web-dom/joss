@@ -37,9 +37,27 @@ Because JSON is a less rigid structure than a binary format.  Error handling is 
 
 Because web assembly lacks an easy way to return multiple outputs, we are forced to resort to a structured format of some type. Even with the use of multiple outputs, representing return objects that are very nested or have arrays may be problematic. JSON has few if none of these complexities (asside from memory allocation) and works with the web assembly spec as it is now.
 
-# Examples
+# System Calls
 
-The spec will be mirroring concepts of the Plan 9 system call interface with emphasis on human readability and simplicity http://aiju.de/plan_9/plan9-syscalls
+JOSS takes inspiration from Plan 9 and Redox system calls:
+
+* set_current_directory
+* get_process_id
+* file_open
+* file_close
+* file_read
+* file_write
+* file_get_path
+* file_rename
+* file_get_metadata
+* file_link
+* file_unlink
+* file_set_offset
+* exit
+
+* /dev/clock
+* /proc/<id>/args
+
 
 ## Getting command line arguments
 
