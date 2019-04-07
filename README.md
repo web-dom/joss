@@ -124,7 +124,7 @@ fn main() {
     let output_json = json!({
         "operation": "file_write",
         "file_descriptor": 1,
-        "text":output
+        "text":"Hello World!"
     });
     joss::syscall(output_json.to_string());
 }
