@@ -56,7 +56,7 @@ JOSS takes inspiration from Plan 9 and Redox system calls:
 * exit
 
 * /dev/clock
-* /proc/<id>/args
+* /proc/[id]/args
 
 
 ## Getting command line arguments
