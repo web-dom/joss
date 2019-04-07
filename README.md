@@ -83,7 +83,8 @@ JOSS takes inspiration from Plan 9 and Redox system calls:
 
 ## Write to a file
 
-```json{
+```json
+{
   "operation":"file_open",
   "mode":["write"],
   "path":"/hello.txt"
