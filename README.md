@@ -39,7 +39,7 @@ Because web assembly lacks an easy way to return multiple outputs, we are forced
 
 # System Calls
 
-JOSS takes inspiration from Plan 9 and Redox system calls:
+JOSS takes inspiration from UNIX, Plan 9, and Redox system calls:
 
 ## V1
 * set_current_directory
