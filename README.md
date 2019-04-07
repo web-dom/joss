@@ -41,6 +41,7 @@ Because web assembly lacks an easy way to return multiple outputs, we are forced
 
 JOSS takes inspiration from Plan 9 and Redox system calls:
 
+## V1
 * set_current_directory
 * get_process_id
 * file_open
@@ -55,7 +56,13 @@ JOSS takes inspiration from Plan 9 and Redox system calls:
 * file_set_offset
 * exit
 
-* /dev/clock
+## Standard File Paths
+* . (the current directory file descriptor)
+* .. (the parent directory file descriptor)
+* /dev/stdin (file_descriptor:0)
+* /dev/stdout (file_descriptor:1)
+* /dev/stderr (file_descriptor:2)
+* /dev/clock (file_descriptor:3)
 * /proc/[id]/args
 
 
